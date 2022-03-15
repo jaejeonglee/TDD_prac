@@ -4,7 +4,13 @@ const host = '0.0.0.0';
 
 const app = express();
 const productRoutes = require('./route');
+const mongoose = require('mongoose');
 
+mongoose.connect('mongodb+srv://ljj100011:wowjd!5256@cluster1.q2pic.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+{
+    useNewUrlParser: true
+}).then(()=> console.log('mongoDB connected..'))
+.catch (err => console.log(err))
 
 app.use(express.json())
 
