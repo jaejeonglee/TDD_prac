@@ -1,0 +1,19 @@
+{
+  "name": "tdd_prac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaejeonglee/TDD_prac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaejeonglee/TDD_prac/issues"
+  },
+  "homepage": "https://github.com/jaejeonglee/TDD_prac#readme"
+}
