@@ -3,7 +3,7 @@ const port = 3000;
 const host = '0.0.0.0';
 
 const app = express();
-const productRoutes = require('./route');
+const productRoutes = require('./routes');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://ljj100011:wowjd!5256@cluster1.q2pic.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
