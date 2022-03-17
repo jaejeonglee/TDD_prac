@@ -26,21 +26,21 @@ describe('Product Controller Create', () => {
     expect(typeof productController.createProduct).toBe('function')
   })
   //createProduct함수를 호출할 때 Product Model의 Create 메소드가 호출되는지 확인
-  it('should call productModel.create', () => {
-      productController.createProduct(req, res, next)
-      expect(productModel.create).toBeCalledWith(newProduct)
+  it('should call productModel.create', async () => {
+    await productController.createProduct(req, res, next)
+    expect(productModel.create).toBeCalledWith(newProduct)
   })
   //성공적으로 데이터를 create했을 시 상태코드를 201로 response보내는지 확인 
-  it('should return 201 response code', () => {
-    productController.createProduct(req, res, next)
+  it('should return 201 response code', async () => {
+    await productController.createProduct(req, res, next)
     expect(res.statusCode).toBe(201)
     // expect(res._isEndCalled()).toBeTruthy()// res.send를 실제로 하고있다면 true이기 때문에 passed
     expect(res._isJSON()).toBeTruthy()// res.json을 실제로 하고있다면 true이기 때문에 passed
   })
   //
-  it('should return json body in response', () => {
+  it('should return json body in response',async () => {
     productModel.create.mockReturnValue(newProduct)//Mock함수로 create했을 때 return값은 newProduct
-    productController.createProduct(req, res, next)
+    await productController.createProduct(req, res, next)
     expect(res._getJSONData()).toStrictEqual(newProduct)//response되는 json데이터가 newProduct랑 같은지 확인
   })
 })
