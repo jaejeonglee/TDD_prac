@@ -17,5 +17,7 @@ it('should return 500 on POST /api/products', async () => {
         .send({name: "phone"})
 
     expect(response.statusCode).toBe(500)// res의 statusCode가 500인지 확인
-   
+    expect(response.body).toStrictEqual({
+        message: 'Product validation failed: description: Path `description` is required.'
+    }) // 에러메세지가 정상적으로 출력되는지 확인  
 })
