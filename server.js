@@ -22,3 +22,5 @@ app.get('/', (req,res) => {
 //port 연결
 app.listen(port,host);
 console.log(`App Running ${port}:${host}`)
+
+module.exports = app// supertest에 쓰려고 내보냄
