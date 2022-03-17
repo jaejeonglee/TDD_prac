@@ -12,7 +12,7 @@ let req, res, next;
 beforeEach(() => {
   req = httpMocks.createRequest()
   res = httpMocks.createResponse()
-  next = null
+  next = jest.fn()
 })
 
 describe('Product Controller Create', () => {
@@ -42,5 +42,13 @@ describe('Product Controller Create', () => {
     productModel.create.mockReturnValue(newProduct)//Mock함수로 create했을 때 return값은 newProduct
     await productController.createProduct(req, res, next)
     expect(res._getJSONData()).toStrictEqual(newProduct)//response되는 json데이터가 newProduct랑 같은지 확인
+  })
+  //임의로 예외처리를 해주어 핸들링하기
+  it('should handle errors', async () => {
+    const errorMessage = { message: "description property missing"}// 에러메세지 정해주기
+    const rejectedPromise = Promise.reject(errorMessage)// 비동기 요청이 실패하면 Promise.reject(reason)의 형식으로 왜 실패했는지 알려준다
+    productModel.create.mockReturnValue(rejectedPromise)// 일부러 동기처리하지 안하기
+    await productController.createProduct(req, res, next)
+    expect(next).toBeCalledWith(errorMessage)// 비동기에 대한 예외처리를 next로 해줘야하기 때문에 next가 실행됐을 때 에러메세지 동작하는지 확인
   })
 })
