@@ -1,0 +1,15 @@
+[{
+    "name": "Phone",
+    "description": "good",
+    "price": 100
+},
+{
+    "name": "Mac",
+    "description": "good",
+    "price": 999
+},
+{
+    "name": "Pen",
+    "description": "made in china",
+    "price": 1
+}]
